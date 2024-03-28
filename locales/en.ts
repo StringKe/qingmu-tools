@@ -1,5 +1,5 @@
 export default {
     layouts: {
-        title: '{} - Qingmu Tools',
+        title: '{title} - Qingmu Tools',
     },
 };
