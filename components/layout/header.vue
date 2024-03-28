@@ -21,7 +21,8 @@
                     </MenubarSub>
                 </MenubarContent>
             </MenubarMenu>
-            <div class="ml-auto flex h-full gap-2">
+            <div class="ml-auto flex h-full items-center gap-2">
+                <LayoutHeaderUser />
                 <UtilsLanguageSwitch />
                 <UtilsToggleTheme />
                 <LayoutSearch />

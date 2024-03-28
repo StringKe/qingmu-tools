@@ -1,17 +1,8 @@
-import { z } from 'zod';
-
-import { publicProcedure, router } from '../trpc';
-
-let name = 'Jeff';
+import { protectedProcedure, publicProcedure, router } from '../trpc';
 
 export const appRouter = router({
-    helloName: publicProcedure.query(() => `Hello there, ${name}!`),
-    changeName: publicProcedure.input(z.string()).mutation(({ input }) => {
-        name = input;
-    }),
-    plusOne: publicProcedure.input(z.number()).query(({ input }) => {
-        return input + 1;
-    }),
+    helloName: publicProcedure.query(() => `Hello world!`),
+    changeName: protectedProcedure.query(() => 'Hello world!'),
 });
 
 export type AppRouter = typeof appRouter;

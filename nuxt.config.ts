@@ -9,8 +9,17 @@ export default defineNuxtConfig({
         '@nuxt/eslint',
         '@nuxtjs/i18n',
         'shadcn-nuxt',
+        '@logto/nuxt',
         'unplugin-icons/nuxt',
     ],
+    logto: {
+        cookieName: 'user_token',
+        pathnames: {
+            signIn: '/auth/login',
+            signOut: '/auth/logout',
+            callback: '/auth/callback',
+        },
+    },
     css: ['~/assets/css/main.scss'],
     vite: {
         plugins: [comlink()],

@@ -2,7 +2,7 @@
 
 <template>
     <div>
-        <h1>Terms</h1>
+        <h1>Terms of Use for Qingmu Tools</h1>
     </div>
 </template>
 

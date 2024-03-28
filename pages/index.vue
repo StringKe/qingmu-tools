@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 const { data } = useApiClient().helloName.useQuery();
+const { data: changeName } = useApiClient().changeName.useQuery();
+
 watchEffect(() => {
-    console.log(data);
+    console.log(data, changeName);
 });
 </script>
 
