@@ -65,6 +65,9 @@ const VIEW_TEMPLATE = `
 <template>
     <ClientOnly>
         %entrypoint%
+        <template #fallback>
+            <CommonToolLoading />
+        </template>
     </ClientOnly>
 </template>
 

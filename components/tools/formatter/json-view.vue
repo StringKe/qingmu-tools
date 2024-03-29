@@ -20,7 +20,7 @@ function onReadonly() {
     const editor = editorRef.value?.$editor;
     if (editor) {
         const readOnly = editor.getOption(RawEditor.EditorOption.readOnly);
-        console.log(editor, readOnly);
+        editor.updateOptions({ readOnly: !readOnly });
     }
 }
 </script>
