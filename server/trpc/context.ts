@@ -1,5 +1,4 @@
-import LogtoClient from '@logto/node';
-import { CookieStorage, LogtoRuntimeConfig } from '@logto/nuxt';
+import LogtoClient, { CookieStorage } from '@logto/node';
 
 import type { H3Event } from 'h3';
 
@@ -8,7 +7,7 @@ export type TrpcContext = Awaited<ReturnType<typeof createContext>>;
 export async function logtoClient(event: H3Event): Promise<LogtoClient> {
     const config = useRuntimeConfig(event);
 
-    const logtoConfig = config.logto as LogtoRuntimeConfig;
+    const logtoConfig = config.logto as any;
     const {
         cookieName,
         cookieEncryptionKey,

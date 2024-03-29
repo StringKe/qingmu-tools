@@ -1,4 +1,4 @@
-import { readdirSync, statSync, writeFileSync } from 'node:fs';
+import { readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { omit, startCase } from 'lodash-es';
@@ -91,11 +91,14 @@ export default defineNuxtModule({
         const generatedPath = join(basePath, 'generated.json');
         writeFileSync(generatedPath, JSON.stringify(tree, null, 2));
 
+        if (statSync(basePath).isDirectory()) {
+            rmSync(join(nuxt.options.buildDir, 'tools'), { recursive: true });
+        }
+
         // 为所有 tools 生成被 ClientOnly 包裹的页面
         const pages = tools.map((tool) => {
             const componentName = startCase(tool.path.replaceAll('/', ' ')).split(' ').join('') + 'View';
             const autoImportName = `Tools${componentName}`;
-
             const viewFileName = `${tool.path.split('/').filter(Boolean).join('-')}-view.vue`;
 
             const res = addTemplate({

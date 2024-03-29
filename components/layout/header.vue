@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { IconBrandGithub } from '~/components/icons';
+
 import { tools } from '../tools/tools';
 
 watchEffect(() => {
@@ -20,7 +22,19 @@ watchEffect(() => {
                 <LayoutSearch />
             </div>
             <div class="flex h-full items-center gap-2">
-                <LayoutHeaderUser />
+                <Button
+                    as-child
+                    variant="link"
+                >
+                    <a
+                        href="https://github.com/StringKe/qingmu-tools"
+                        target="_blank"
+                    >
+                        <IconBrandGithub
+                            class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
+                        />
+                    </a>
+                </Button>
                 <UtilsLanguageSwitch />
                 <UtilsToggleTheme />
             </div>
