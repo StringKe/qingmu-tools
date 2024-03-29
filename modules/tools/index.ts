@@ -37,28 +37,6 @@ function parserTools(BASE_PATH: string, path: string): Tool {
     };
 }
 
-function buildTreeJSON(tools: Tool[]) {
-    // 根据 path 生成树形结构
-    const tree = tools.reduce(
-        (prev, current) => {
-            const paths = current.path.split('/').filter(Boolean);
-            let parent = prev;
-            paths.forEach((path, index) => {
-                if (index === paths.length - 1) {
-                    parent[path] = current;
-                } else {
-                    parent[path] = parent[path] || {};
-                    parent = parent[path];
-                }
-            });
-            return prev;
-        },
-        {} as Record<string, any>,
-    );
-
-    return tree;
-}
-
 const VIEW_TEMPLATE = `
 <script lang="ts" setup></script>
 
@@ -72,7 +50,7 @@ const VIEW_TEMPLATE = `
 </template>
 
 <style lang="scss" scoped></style>
-            `;
+`;
 
 export default defineNuxtModule({
     meta: {
@@ -85,11 +63,17 @@ export default defineNuxtModule({
 
         const toolsPaths = readAllFile(basePath);
         const tools = toolsPaths.map((path) => parserTools(basePath, path));
-        const tree = buildTreeJSON(tools.map((item) => omit(item, 'file') as never));
 
         // 在 basePath 下生成 generated.json
         const generatedPath = join(basePath, 'generated.json');
-        writeFileSync(generatedPath, JSON.stringify(tree, null, 2));
+        writeFileSync(
+            generatedPath,
+            JSON.stringify(
+                tools.map((item) => omit(item, 'file')),
+                null,
+                4,
+            ),
+        );
 
         if (statSync(basePath).isDirectory()) {
             rmSync(join(nuxt.options.buildDir, 'tools'), { recursive: true });
