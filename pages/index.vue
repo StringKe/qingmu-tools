@@ -1,13 +1,4 @@
-<script lang="ts" setup>
-const app = useNuxtApp();
-const i18n = useI18n();
-
-watchEffect(() => {
-    if (typeof window !== 'undefined') {
-        console.log(app.$router.options, i18n);
-    }
-});
-</script>
+<script lang="ts" setup></script>
 
 <template>
     <div>

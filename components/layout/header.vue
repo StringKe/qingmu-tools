@@ -2,12 +2,6 @@
 import { IconBrandGithub } from '~/components/icons';
 
 import { tools } from '../tools/tools';
-
-watchEffect(() => {
-    if (typeof window !== 'undefined') {
-        console.log(tools);
-    }
-});
 </script>
 
 <template>

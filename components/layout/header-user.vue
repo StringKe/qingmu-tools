@@ -1,9 +1,5 @@
 <script lang="ts" setup>
 const user = useLogtoUser();
-
-watchEffect(() => {
-    console.log(user);
-});
 </script>
 
 <template>

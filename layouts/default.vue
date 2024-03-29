@@ -2,7 +2,7 @@
 import { get } from 'lodash-es';
 
 const route = useRoute();
-const { t } = useI18n();
+const { t, te } = useI18n();
 const head = useLocaleHead({
     addDirAttribute: true,
     identifierAttribute: 'id',
@@ -10,16 +10,22 @@ const head = useLocaleHead({
 });
 
 const title = computed(() => {
-    let titleKey = 'tools.' + route.path.replaceAll('/', '.').slice(1);
-    let name = t(titleKey);
-    if (!name.length) {
-        titleKey = get<string>(route as never, 'meta.title', 'Page');
-        name = t(titleKey);
-    } else {
-        titleKey = `tools.${route.path.split('/')[1]}._title`;
-        name = `${name} ${t(titleKey)}`;
+    let title = 'Page';
+
+    const toolsTitleKey = 'tools.' + route.path.replaceAll('/', '.').slice(1);
+    if (te(toolsTitleKey)) {
+        title = t(toolsTitleKey);
     }
-    return t('layouts.title', { title: name });
+    const toolsCategoryKey = `tools.${route.path.split('/')[1]}._title`;
+    if (te(toolsCategoryKey)) {
+        if (title != 'Page') {
+            title = title + ' - ' + t(toolsCategoryKey);
+        } else {
+            title = t(toolsCategoryKey);
+        }
+    }
+
+    return t('layouts.title', { title: title });
 });
 </script>
 
