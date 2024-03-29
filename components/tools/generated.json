@@ -1,0 +1,14 @@
+{
+  "encode-decode": {
+    "base64": {
+      "name": "base64",
+      "path": "/encode-decode/base64"
+    }
+  },
+  "formatter": {
+    "json": {
+      "name": "json",
+      "path": "/formatter/json"
+    }
+  }
+}

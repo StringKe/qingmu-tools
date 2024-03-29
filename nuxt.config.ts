@@ -10,6 +10,8 @@ export default defineNuxtConfig({
         '@nuxtjs/i18n',
         'shadcn-nuxt',
         '@logto/nuxt',
+        '@nuxtjs/sitemap',
+        'nuxt-monaco-editor',
         'unplugin-icons/nuxt',
     ],
     logto: {
@@ -19,6 +21,12 @@ export default defineNuxtConfig({
             signOut: '/auth/logout',
             callback: '/auth/callback',
         },
+    },
+    monacoEditor: {
+        locale: 'en',
+    },
+    site: {
+        url: 'https://qingmu.dev',
     },
     css: ['~/assets/css/main.scss'],
     vite: {
@@ -44,6 +52,9 @@ export default defineNuxtConfig({
     devtools: { enabled: true },
     tailwindcss: {
         cssPath: false,
+    },
+    tools: {
+        path: './components/tools',
     },
     shadcn: {
         prefix: '',

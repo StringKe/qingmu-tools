@@ -19,7 +19,7 @@ export default defineNuxtPlugin(() => {
                     headers: useRequestHeaders(),
                     fetch: customFetchWrapper(),
 
-                    // transformer: superjson,
+                    // formatter: superjson,
                 }),
             ],
             transformer: superjson,

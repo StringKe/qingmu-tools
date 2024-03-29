@@ -1,4 +1,12 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { tools } from '../tools/tools';
+
+watchEffect(() => {
+    if (typeof window !== 'undefined') {
+        console.log(tools);
+    }
+});
+</script>
 
 <template>
     <div class="relative h-full w-full">
@@ -6,26 +14,15 @@
             <NuxtLinkLocale to="/">
                 <Button variant="link">Qingmu</Button>
             </NuxtLinkLocale>
-            <MenubarMenu>
-                <MenubarTrigger>编解码</MenubarTrigger>
-                <MenubarContent>
-                    <MenubarItem>JSON</MenubarItem>
-                    <MenubarItem>Base64</MenubarItem>
-                    <MenubarSub>
-                        <MenubarSubTrigger>Share</MenubarSubTrigger>
-                        <MenubarSubContent>
-                            <MenubarItem>Email link</MenubarItem>
-                            <MenubarItem>Messages</MenubarItem>
-                            <MenubarItem>Notes</MenubarItem>
-                        </MenubarSubContent>
-                    </MenubarSub>
-                </MenubarContent>
-            </MenubarMenu>
-            <div class="ml-auto flex h-full items-center gap-2">
+            <LayoutHeaderMenu :tools="tools" />
+
+            <div class="mx-auto flex h-full items-center gap-2">
+                <LayoutSearch />
+            </div>
+            <div class="flex h-full items-center gap-2">
                 <LayoutHeaderUser />
                 <UtilsLanguageSwitch />
                 <UtilsToggleTheme />
-                <LayoutSearch />
             </div>
         </Menubar>
     </div>

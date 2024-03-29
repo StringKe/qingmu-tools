@@ -8,7 +8,19 @@ const head = useLocaleHead({
     identifierAttribute: 'id',
     addSeoAttributes: true,
 });
-const title = computed(() => t('layouts.title', { title: t(get<string>(route as never, 'meta.title', '页面')) }));
+
+const title = computed(() => {
+    let titleKey = 'tools.' + route.path.replaceAll('/', '.').slice(1);
+    let name = t(titleKey);
+    if (!name.length) {
+        titleKey = get<string>(route as never, 'meta.title', 'Page');
+        name = t(titleKey);
+    } else {
+        titleKey = `tools.${route.path.split('/')[1]}._title`;
+        name = `${name} ${t(titleKey)}`;
+    }
+    return t('layouts.title', { title: name });
+});
 </script>
 
 <template>
@@ -43,7 +55,7 @@ const title = computed(() => t('layouts.title', { title: t(get<string>(route as 
         <Body>
             <div class="relative flex min-h-screen w-full flex-col">
                 <LayoutHeader />
-                <div class="relative min-h-0 w-full flex-1">
+                <div class="relative h-[calc(100vh-2.5rem)] w-full">
                     <slot />
                 </div>
             </div>

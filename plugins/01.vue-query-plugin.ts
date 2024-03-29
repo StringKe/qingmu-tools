@@ -6,6 +6,14 @@ import type { DehydratedState } from '@tanstack/vue-query';
 const retry = (failureCount: number, error: Error) => {
     if (error instanceof TRPCClientError) {
         if (error.data.code === 'UNAUTHORIZED') {
+            if (process.client) {
+                window.dispatchEvent(
+                    new Event('unauthorized', {
+                        bubbles: true,
+                        cancelable: true,
+                    }),
+                );
+            }
             // 不允许重试
             return false;
         }

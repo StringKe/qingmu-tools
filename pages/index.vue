@@ -1,9 +1,11 @@
 <script lang="ts" setup>
-const { data } = useApiClient().helloName.useQuery();
-const { data: changeName } = useApiClient().changeName.useQuery();
+const app = useNuxtApp();
+const i18n = useI18n();
 
 watchEffect(() => {
-    console.log(data, changeName);
+    if (typeof window !== 'undefined') {
+        console.log(app.$router.options, i18n);
+    }
 });
 </script>
 
