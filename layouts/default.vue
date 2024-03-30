@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { get } from 'lodash-es';
+import { SpeedInsights } from '@vercel/speed-insights/vue';
 
 const route = useRoute();
 const { t, te } = useI18n();
@@ -65,6 +65,7 @@ const title = computed(() => {
                     <slot />
                 </div>
             </div>
+            <SpeedInsights />
         </Body>
     </Html>
 </template>
