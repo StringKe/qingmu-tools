@@ -1,9 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-    <div>
-        <Button>123</Button>
-    </div>
+    <CommonToolWelcome base-path="/" />
 </template>
 
 <style lang="scss" scoped></style>
