@@ -20,6 +20,7 @@
         "@trpc/client": "^10.45.2",
         "@trpc/server": "^10.45.2",
         "@vee-validate/zod": "^4.12.6",
+        "@vercel/analytics": "^1.2.2",
         "@vueuse/core": "^10.9.0",
         "class-variance-authority": "^0.7.0",
         "clsx": "^2.1.0",
