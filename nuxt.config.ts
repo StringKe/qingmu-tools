@@ -14,6 +14,8 @@ export default defineNuxtConfig({
         'unplugin-icons/nuxt',
         '~/modules/tools',
         '@nuxtjs/i18n',
+        '@vueuse/nuxt',
+        '@nuxtjs/device',
     ],
     logto: {
         cookieName: 'user_token',

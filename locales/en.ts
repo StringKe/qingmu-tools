@@ -4,7 +4,11 @@ export default <LocaleMessage>{
     layouts: {
         title: '{title} - Qingmu Tools',
     },
-    common: {},
+    common: {
+        tools: 'Tools',
+        no_tools: 'No tools available',
+        search_tools: 'Type to search tools',
+    },
     tools: {
         'encode-decode': {
             _title: 'Encode / Decode',

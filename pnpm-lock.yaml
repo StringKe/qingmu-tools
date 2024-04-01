@@ -44,6 +44,9 @@ dependencies:
   '@vueuse/core':
     specifier: ^10.9.0
     version: 10.9.0(vue@3.4.21)
+  '@vueuse/nuxt':
+    specifier: ^10.9.0
+    version: 10.9.0(nuxt@3.11.1)(rollup@4.13.1)(vue@3.4.21)
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -112,6 +115,9 @@ devDependencies:
   '@nuxtjs/color-mode':
     specifier: ^3.3.3
     version: 3.3.3(rollup@4.13.1)
+  '@nuxtjs/device':
+    specifier: ^3.1.1
+    version: 3.1.1(rollup@4.13.1)
   '@nuxtjs/i18n':
     specifier: ^8.2.0
     version: 8.2.0(rollup@4.13.1)(vue@3.4.21)
@@ -1725,6 +1731,16 @@ packages:
     dependencies:
       '@nuxt/kit': 3.11.1(rollup@4.13.1)
       pathe: 1.1.2
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+    dev: true
+
+  /@nuxtjs/device@3.1.1(rollup@4.13.1):
+    resolution: {integrity: sha512-wHTziEevt1hdgePQwPhEedWW3COalhP0YGVB+sGLqSrKujX8vdz7lcBFB01KIftpaP8kY5H8pssibNaJbxGcYw==}
+    dependencies:
+      '@nuxt/kit': 3.11.1(rollup@4.13.1)
+      defu: 6.1.4
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -3592,7 +3608,6 @@ packages:
       - rollup
       - supports-color
       - vue
-    dev: true
 
   /@vueuse/shared@10.9.0(vue@3.4.21):
     resolution: {integrity: sha512-Uud2IWncmAfJvRaFYzv5OHDli+FbOzxiVEQdLCKQKLyhz94PIyFC3CHcH7EDMwIn8NPtD06+PNbC/PiO0LGLtw==}

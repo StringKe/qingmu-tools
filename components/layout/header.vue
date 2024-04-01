@@ -13,7 +13,7 @@ import { tools } from '../tools/tools';
             <LayoutHeaderMenu :tools="tools" />
 
             <div class="mx-auto flex h-full items-center gap-2">
-                <LayoutSearch />
+                <LayoutHeaderCommand />
             </div>
             <div class="flex h-full items-center gap-2">
                 <Button
