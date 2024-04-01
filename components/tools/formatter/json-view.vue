@@ -12,18 +12,19 @@ const { t } = useI18n({ useScope: 'local' });
 const targetValue = useToolValue<String>('');
 
 function onRemoveEscape() {
-    if (targetValue.value) {
-        targetValue.value = JSON.stringify(JSON.parse(targetValue.value), null, 4);
-    }
+    // @ts-ignore
+    targetValue.value = JSON.stringify(JSON.parse(targetValue.value), null, 4);
 }
 
 function onCopy() {
+    // @ts-ignore
     navigator.clipboard.writeText(targetValue.value!);
 }
 
 function onSelectAll() {
     const editor = editorRef.value?.$editor;
     if (editor) {
+        // @ts-ignore
         editor.setSelection(editor.getModel()?.getFullModelRange());
     }
 }
