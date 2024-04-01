@@ -3,17 +3,29 @@ import { editor as RawEditor } from 'monaco-editor';
 
 import type { MonacoEditor } from '#components';
 
-const editorRef = ref<InstanceType<typeof MonacoEditor>>();
+import { useMonacoEditor } from '~/composables/useMonacoEditor';
+import { useToolValue } from '~/composables/useTools';
+
+const editorRef = useMonacoEditor();
 
 const { t } = useI18n({ useScope: 'local' });
-const input = ref('');
+const targetValue = useToolValue<String>('');
 
 function onRemoveEscape() {
-    input.value = JSON.stringify(JSON.parse(input.value), null, 4);
+    if (targetValue.value) {
+        targetValue.value = JSON.stringify(JSON.parse(targetValue.value), null, 4);
+    }
 }
 
 function onCopy() {
-    navigator.clipboard.writeText(input.value);
+    navigator.clipboard.writeText(targetValue.value!);
+}
+
+function onSelectAll() {
+    const editor = editorRef.value?.$editor;
+    if (editor) {
+        editor.setSelection(editor.getModel()?.getFullModelRange());
+    }
 }
 
 function onReadonly() {
@@ -29,7 +41,7 @@ function onReadonly() {
     <CommonToolSidePanel>
         <MonacoEditor
             ref="editorRef"
-            v-model="input"
+            v-model="targetValue"
             :options="{
                 formatOnPaste: true,
                 formatOnType: true,
@@ -58,6 +70,9 @@ function onReadonly() {
                 <Button @click="onCopy">
                     {{ t('copy') }}
                 </Button>
+                <Button @click="onSelectAll">
+                    {{ t('select_all') }}
+                </Button>
             </div>
         </template>
     </CommonToolSidePanel>
@@ -70,12 +85,14 @@ function onReadonly() {
     "zh": {
         "readonly": "编辑器只读",
         "remove_escape": "去除转义",
-        "copy": "复制"
+        "copy": "复制",
+        "select_all": "全选"
     },
     "en": {
         "readonly": "Editor Readonly Mode",
         "remove_escape": "Remove Escape",
-        "copy": "Copy"
+        "copy": "Copy",
+        "select_all": "Select All"
     }
 }
 </i18n>
