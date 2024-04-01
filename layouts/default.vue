@@ -57,6 +57,10 @@ const title = computed(() => {
                     :property="meta.property"
                 />
             </template>
+            <meta
+                content="codeva-mgmGmlDKEd"
+                name="baidu-site-verification"
+            />
         </Head>
         <Body>
             <div class="relative flex min-h-screen w-full flex-col">
