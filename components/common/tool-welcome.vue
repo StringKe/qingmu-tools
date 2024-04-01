@@ -40,14 +40,14 @@ const filteredTools = computed(() => filterTools(tools, props.basePath));
                 >
                     {{ $t(tool.title) }}
                 </NuxtLinkLocale>
-                <div class="mt-4 grid grid-cols-4 gap-2">
+                <div class="mt-4 grid grid-cols-2 gap-2 md:grid-cols-4">
                     <template
                         v-for="child in tool.children"
                         :key="child.path"
                     >
                         <NuxtLinkLocale
                             :to="localePath(child.path)"
-                            class="flex w-max max-w-[75%] flex-col gap-2 rounded-lg bg-muted px-3 py-2 text-sm transition hover:bg-primary hover:text-white"
+                            class="flex w-full flex-col gap-2 rounded-lg bg-muted px-3 py-2 text-sm transition hover:bg-primary hover:text-white"
                         >
                             {{ $t(child.title) }}
                         </NuxtLinkLocale>

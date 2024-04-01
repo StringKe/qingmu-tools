@@ -25,7 +25,7 @@ const level = computed(() => props.level ?? 0);
             :key="toolGroup.path"
         >
             <MenubarMenu>
-                <MenubarTrigger>{{ $t(toolGroup.title) }}</MenubarTrigger>
+                <MenubarTrigger class="hidden md:flex">{{ $t(toolGroup.title) }}</MenubarTrigger>
                 <MenubarContent>
                     <template
                         v-for="child in toolGroup.children"
