@@ -24,9 +24,7 @@ import { tools } from '../tools/tools';
                         href="https://github.com/StringKe/qingmu-tools"
                         target="_blank"
                     >
-                        <IconBrandGithub
-                            class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
-                        />
+                        <IconBrandGithub class="h-[1.2rem] w-[1.2rem] dark:text-white" />
                     </a>
                 </Button>
                 <UtilsLanguageSwitch />
