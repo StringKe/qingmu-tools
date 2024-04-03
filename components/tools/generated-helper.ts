@@ -28,6 +28,11 @@ export function extendTool(path: string, handle: (tool: GenerateTool) => Partial
         generateTools.push({ ...tool, ...value });
     }
 }
+
+export function addTool(tool: GenerateTool) {
+    generateTools.push(tool);
+}
+
 export function buildTree(): Tool[] {
     const pathToNodeMap: Map<string, Tool> = new Map();
     let allShortcuts: string[] = [];
@@ -46,8 +51,7 @@ export function buildTree(): Tool[] {
 
                 const node: Tool = {
                     name: segment,
-                    path: `/${currentPath}`,
-                    // 对于 group 类型（非叶子节点），标题键额外拼接 `._title`
+                    path: `/${currentPath}`, // 对于 group 类型（非叶子节点），标题键额外拼接 `._title`
                     title: baseTranslationKey + (isLastSegment ? '' : '._title'),
                     children: [],
                     keywords: [],
@@ -79,8 +83,7 @@ export function buildTree(): Tool[] {
 
             // 更新 toolNode 的属性，特别是对 group 类型节点的标题进行特别处理
             Object.assign(toolNode, {
-                ...genTool,
-                // 如果当前节点有子节点，则认为它是一个 group，所以需要拼接 `._title`
+                ...genTool, // 如果当前节点有子节点，则认为它是一个 group，所以需要拼接 `._title`
                 title: hasChildren ? toolNode.title + '._title' : toolNode.title,
                 shortcut: genTool.shortcut,
                 keywords: [...(genTool.keywords ?? []), genTool.path],

@@ -5,6 +5,9 @@ import { useToolValue } from '~/composables/useTools';
 
 const { t } = useI18n({ useScope: 'local' });
 
+const inputMonacoEditor = useMonacoEditor();
+const outputMonacoEditor = useMonacoEditor();
+
 const model = ref<'encode' | 'decode'>('encode');
 const input = useToolValue('', 'input');
 const output = useToolValue('', 'output');
@@ -26,6 +29,7 @@ watch([input, model], () => {
                 <h3 class="font-semibold leading-none tracking-tight">{{ t('input') }}</h3>
                 <div class="h-full min-h-0 w-full flex-1">
                     <MonacoEditor
+                        ref="inputMonacoEditor"
                         v-model="input"
                         :options="{
                             formatOnPaste: true,
@@ -40,6 +44,7 @@ watch([input, model], () => {
                 <h3 class="font-semibold leading-none tracking-tight">{{ t('output') }}</h3>
                 <div class="h-full min-h-0 w-full flex-1">
                     <MonacoEditor
+                        ref="outputMonacoEditor"
                         v-model="output"
                         :options="{
                             formatOnPaste: true,
